@@ -56,12 +56,12 @@ Route::get('admin/signout', function(){
 });
 
 # User Routing
-Route::get('user/menuoverview', function(){
-	return View::make('user/menuoverview');
-});
-
 Route::get('user/orderoverview', function(){
 	return View::make('user/orderoverview');
+});
+
+Route::get('user/menuoverview', function(){
+	return View::make('user/menuoverview');
 });
 
 Route::get('user/profile', function(){

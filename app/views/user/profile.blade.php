@@ -6,4 +6,7 @@
  * Time: 10:44
  */
 ?>
-@extends('layouts.user)
+@extends('layouts.user')
+@section('content')
+    <h1>blub</h1>
+    @stop
