@@ -328,18 +328,24 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="messages">
-                    <div class="dropzone">
-
-                    </div>
+                    <form action="/file-upload"
+                          class="dropzone"></form>
                 </div>
                 <div class="tab-pane fade" id="settings">
-                    <div class="dropzone">
-
-                    </div>
+                    <form action="/file-upload"
+                          class="dropzone"></form>
                 </div>
             </div>
             <!-- tab-content -->
         </div>
     </div>
+@stop
+@section('scripts')
+    <script type="text/javascript">
+        $("#dashboard").removeClass('active');
+        $("#menumanagement").removeClass('active');
+        $("#usermanagement").removeClass('active');
+        $("#menumanagement").addClass('active');
+    </script>
 @stop
 

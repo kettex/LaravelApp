@@ -171,4 +171,11 @@
         </div>
     </div>
 @stop
-
+@section('scripts')
+    <script type="text/javascript">
+        $("#dashboard").removeClass('active');
+        $("#menumanagement").removeClass('active');
+        $("#usermanagement").removeClass('active');
+        $("#usermanagement").addClass('active');
+    </script>
+@stop

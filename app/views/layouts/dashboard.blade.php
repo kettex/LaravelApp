@@ -17,6 +17,8 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ URL::asset('dashboard/css/templatemo_main.css') }}">
+    <link rel="stylesheet" href="{{URL::asset('dashboard/css/dropzone.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('dashboard/css/basic.css')}}">
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
@@ -34,14 +36,14 @@
     <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
             <li>
-                <form class="navbar-form">
+                {{--<form class="navbar-form">
                     <input type="text" class="form-control" id="templatemo_search_box" placeholder="Search...">
                     <span class="btn btn-default">Go</span>
-                </form>
+                </form>--}}
             </li>
-            <li class="active"><a href="{{URL::to('admin/dashboard')}}"><i class="fa fa-home"></i>Dashboard</a></li>
-            <li><a href="{{URL::to('admin/menumanagement')}}"><i class="fa fa-cubes"></i>Menu Management</a></li>
-            <li><a href="{{URL::to('admin/usermanagement')}}"><i class="fa fa-map-marker"></i>User Management</a></li>
+            <li class="active" id="dashboard"><a href="{{URL::to('admin/dashboard')}}"><i class="fa fa-home"></i>Dashboard</a></li>
+            <li id="menumanagement"><a href="{{URL::to('admin/menumanagement')}}"><i class="fa fa-cubes"></i>Menu Management</a></li>
+            <li id="usermanagement"><a href="{{URL::to('admin/usermanagement')}}"><i class="fa fa-map-marker"></i>User Management</a></li>
             <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign
                     Out</a></li>
         </ul>
@@ -80,6 +82,7 @@
 <script src="{{ URL::asset('dashboard/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('dashboard/js/Chart.min.js') }}"></script>
 <script src="{{ URL::asset('dashboard/js/templatemo_script.js') }}"></script>
+<script src="{{URL::asset('dashboard/js/dropzone.js')}}"></script>
 @yield('scripts')
 </body>
 </html>

@@ -55,4 +55,17 @@ Route::get('admin/signout', function(){
 	return View::make('hello');
 });
 
+# User Routing
+Route::get('user/menuoverview', function(){
+	return View::make('user/menuoverview');
+});
+
+Route::get('user/orderoverview', function(){
+	return View::make('user/orderoverview');
+});
+
+Route::get('user/profile', function(){
+	return View::make('user/profile');
+});
+
 

@@ -240,7 +240,7 @@
             </div>
         </div>
     </div>
-    <div id="testimonails">
+    {{--<div id="testimonails">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -287,5 +287,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 @stop
