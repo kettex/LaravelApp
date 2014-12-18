@@ -100,10 +100,7 @@
         <div class="top-footer">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="subscribe-form">
-                        <span>Get in touch with us</span><a href="{{URL::to('contact/index')}}"><img src="{{URL::asset('images/subscribe-icon.png')}}" /></a>
 
-                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="social-bottom">
@@ -111,6 +108,7 @@
                         <ul>
                             <li><a href="#" class="fa fa-facebook"></a></li>
                             <li><a href="#" class="fa fa-twitter"></a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -120,40 +118,32 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="about">
-                        <h4 class="footer-title">About us</h4>
-
+                        <h4 class="footer-title">Impressum</h4>
+                        <p>Sed egestas tincidunt mollis. <span class="blue"></span><span class="green"></span> Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus.
+                            <br><br>Sed egestas tincidunt mollis.Sed egestas tincidunt mollis. Suspendisse rhoncus vitae enim et faucibus.</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="shop-list">
-                        <h4 class="footer-title">Shop Categories</h4>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>New Grill Menu</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Healthy Fresh Juices</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Spicy Delicious Meals</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Simple Italian Pizzas</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Pure Good Yogurts</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Ice-cream for kids</a></li>
-                        </ul>
-                    </div>
+
+                </div>
+                <div class="col-md-3">
+
                 </div>
                 <div class="col-md-3">
                     <div class="more-info">
                         <h4 class="footer-title">More info</h4>
-
-                        <p>Sed dignissim, diam id molestie faucibus, purus nisl pretium quam, in pulvinar velit massa id
-                            elit.</p>
+                        <p>Sed dignissim, diam id molestie faucibus, purus nisl pretium quam, in pulvinar velit massa id elit.</p>
                         <ul>
-                            <li><i class="fa fa-phone"></i>0463 - 123456</li>
-                            <li><i class="fa fa-globe"></i>Universität Klagenfurt, 9020 Klagenfurt</li>
-                            <li><i class="fa fa-envelope"></i><a href="#">info@company.com</a></li>
+                            <li><i class="fa fa-phone"></i>010-020-0340</li>
+                            <li><i class="fa fa-globe"></i>Universitätstrasse 1, 9020 Klagenfurt</li>
+                            <li><i class="fa fa-envelope"></i><a href="#">info@companyname.at</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="bottom-footer">
-            <p>Copyright © 2014 <a href="#">Spendl/Kettl</a></p>
+            <p>Copyright © 2014 <a href="#">Kettl | Spendl</a>  </p>
         </div>
 
     </div>

@@ -88,12 +88,12 @@
     </div>
 </div>--}}
 
-{{--<div id="testimonails">
+  <div id="testimonails">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-section">
-                    <h2>What Customers Say</h2>
+                    <h2>References</h2>
                     <img src="{{URL::asset('images/under-heading.png')}}" alt="" >
                 </div>
             </div>
@@ -125,5 +125,5 @@
             </div>
         </div>
     </div>
-</div>--}}
+</div>
 @stop

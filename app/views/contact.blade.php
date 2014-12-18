@@ -61,8 +61,8 @@
                                             pulvinar
                                             velit massa id elit. </p>
                                         <ul>
-                                            <li><i class="fa fa-phone"></i>0463 - 123456</li>
-                                            <li><i class="fa fa-globe"></i>Universität Klagenfurt, 9020 Klagenfurt</li>
+                                            <li><i class="fa fa-phone"></i>010-020-0340</li>
+                                            <li><i class="fa fa-globe"></i>Universitätstrasse 1, 9020 Klagenfurt</li>
                                             <li><i class="fa fa-envelope"></i><a href="#">info@company.com</a></li>
                                         </ul>
                                     </div>

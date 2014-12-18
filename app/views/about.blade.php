@@ -44,7 +44,7 @@
                         primis in faucibus.</p>
                 </div>
             </div>
-            <div class="space50"></div>
+            {{--<div class="space50"></div>
             <div class="row">
                 <div class="col-md-2 col-sm-4">
                     <div class="timeline-thumb">
@@ -135,11 +135,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>
-    <div id="our-team">
+    {{--<div id="our-team">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -239,7 +239,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     {{--<div id="testimonails">
         <div class="container">
             <div class="row">
