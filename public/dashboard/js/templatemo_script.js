@@ -1,6 +1,4 @@
-/* Credit: http://www.templatemo.com */
-    
-$(document).ready( function() {        
+$(document).ready( function() {
 
 	// sidebar menu click
 	$('.templatemo-sidebar-menu li.sub a').click(function(){

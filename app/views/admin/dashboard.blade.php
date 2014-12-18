@@ -7,7 +7,7 @@
  */
 ?>
 @extends('layouts.dashboard')
-
+@section('title')
 <title>Admin Dashboard</title>
 @stop
 @section('header')

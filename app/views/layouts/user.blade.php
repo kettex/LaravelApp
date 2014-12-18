@@ -13,6 +13,27 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
     @yield('title')
+    <style>
+        .borderBottomRed {
+            border-bottom: 1px solid #F03063;
+        }
+
+        .menuItem {
+            padding: 25px 0px 5px 5px;
+            margin-bottom: 30px;
+            width: 100%;
+            position: relative;
+        }
+
+        .menuInput {
+            display: block;
+            position: relative;
+            top: 40px;
+            right: 0px;
+            width: 90px;
+            padding: 5px;
+        }
+    </style>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width">
@@ -39,8 +60,10 @@
                     <span class="btn btn-default">Go</span>
                 </form>--}}
             </li>
-            <li class="active" id="menuoverview"><a href="{{URL::to('user/menuoverview')}}"><i class="fa fa-home"></i>Menu Overview</a></li>
-            <li id="orderoverview"><a href="{{URL::to('user/orderoverview')}}"><i class="fa fa-cubes"></i>Order Overview</a></li>
+            <li class="active" id="menuoverview"><a href="{{URL::to('user/menuoverview')}}"><i class="fa fa-home"></i>Menu
+                    Overview</a></li>
+            <li id="orderoverview"><a href="{{URL::to('user/orderoverview')}}"><i class="fa fa-cubes"></i>Order Overview</a>
+            </li>
             <li id="profile"><a href="{{URL::to('user/profile')}}"><i class="fa fa-map-marker"></i>Profile</a></li>
             <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign
                     Out</a></li>

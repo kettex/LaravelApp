@@ -67,10 +67,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="logo">
+                    {{--<div class="logo">
                         <a href="#"><img src="{{URL::asset('images/logo.png')}}" title="Logo"
                                          alt="Logo"></a>
-                    </div>
+                    </div>--}}
                 </div>
                 <div class="col-md-6">
                     <div class="main-menu">
