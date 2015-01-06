@@ -23,11 +23,11 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'homestead',
-			'username'  => 'homestead',
-			'password'  => 'secret',
+			'database'  => 'webtech',
+			'username'  => 'root',
+			'password'  => '',
 			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
+			'collation' => 'utf8_general_ci',
 			'prefix'    => '',
 		),
 
@@ -40,7 +40,7 @@ return array(
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
-		),
+		)
 
 	),
 

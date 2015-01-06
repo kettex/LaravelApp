@@ -12,22 +12,13 @@
 */
 
 # Public Website Routing
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showWelcome');
 
-Route::get('about/index', function(){
-	return View::make('about');
-});
+Route::get('about/index','AboutController@about');
 
-Route::get('products/index', function(){
-	return View::make('products');
-});
+Route::get('products/index', 'ProductsController@products');
 
-Route::get('contact/index', function(){
-	return View::make('contact');
-});
+Route::get('contact/index', 'ContactController@contact');
 
 # Login/Register Routing
 Route::get('login', function(){
