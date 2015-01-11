@@ -21,42 +21,24 @@ Route::get('products/index', 'ProductsController@products');
 Route::get('contact/index', 'ContactController@contact');
 
 # Login/Register Routing
-Route::get('login', function(){
-	return View::make('user/login');
-});
+Route::get('login', 'LoginController@showLogin');
 
-Route::get('register', function(){
-	return View::make('user/register');
-});
+Route::get('register', 'RegisterController@showRegisterForm');
 
 # Admin Routing
-Route::get('admin/dashboard', function(){
-	return View::make('admin/dashboard');
-});
+Route::get('admin/dashboard', 'AdminController@showDashboard');
 
-Route::get('admin/menumanagement', function(){
-	return View::make('admin/menumanagement');
-});
+Route::get('admin/menumanagement', 'AdminController@showMenuManagement');
 
-Route::get('admin/usermanagement', function(){
-	return View::make('admin/usermanagement');
-});
+Route::get('admin/usermanagement', 'AdminController@showUserManagement');
 
-Route::get('admin/signout', function(){
-	return View::make('hello');
-});
+Route::get('admin/signout', 'AdminController@signOut');
 
 # User Routing
-Route::get('user/orderoverview', function(){
-	return View::make('user/orderoverview');
-});
+Route::get('user/orderoverview', 'UserController@showOrderOverview');
 
-Route::get('user/menuoverview', function(){
-	return View::make('user/menuoverview');
-});
+Route::get('user/menuoverview', 'UserController@showMenuOverview');
 
-Route::get('user/profile', function(){
-	return View::make('user/profile');
-});
+Route::get('user/profile', 'UserController@showProfile');
 
 
