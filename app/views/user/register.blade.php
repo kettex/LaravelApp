@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="container" style="margin-top: 40px">
-        <form class="form-horizontal templatemo-signin-form" role="form" action="index.html" method="post">
+        {{ Form::open(['method' => 'post', 'class' => 'form-horizontal templatemo-signin-form']) }}
             <div class="row">
                 <div class="col-md-12 ">
                     <label for="CompanyName">Company</label>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        {{Form::close()}}
     </div>
 @stop
 

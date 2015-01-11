@@ -25,6 +25,8 @@ Route::get('login', 'LoginController@showLogin');
 
 Route::get('register', 'RegisterController@showRegisterForm');
 
+Route::post('register', 'RegisterController@registerUser');
+
 # Admin Routing
 Route::get('admin/dashboard', 'AdminController@showDashboard');
 
