@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration {
+class AddMenusForeignKeyOrdersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,8 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function($t) {
-			$t->increments('id');
-			$t->string('username', 16);
-			$t->string('password', 64);
-			$t->timestamps();
+		Schema::table('orders', function($table){
+			$table->foreign('menu_id')->references('id')->on('menus');
 		});
 	}
 
@@ -27,6 +24,9 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('users');
+		Schema::table('orders', function($table){
+			$table->dropForeign('orders_menu_id_foreign');
+		});
 	}
+
 }
