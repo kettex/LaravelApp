@@ -15,10 +15,16 @@ class RegisterController extends BaseController {
 
 	public function showRegisterForm()
 	{
-		return View::make('user/register');
+		$user = new User();
+		return View::make('user/register', compact('user'));
 	}
 
 	public function registerUser(){
-		return View::make('hello');
+
+		$user = new User();
+		$user->fill(Input::all());
+
+		$user->save();
+		return Redirect::to('/');
 	}
 }
