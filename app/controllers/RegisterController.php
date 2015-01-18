@@ -23,8 +23,9 @@ class RegisterController extends BaseController {
 		try{
 			// fill the user with values of the form
 			$user->fill(Input::except('repeatPassword'));
-
-			// ToDo hash password!! Send mail notification!!
+			$user->password = Hash::make($user->password);
+			$user->isActive = false;
+			// ToDo Send mail notification!!
 			// save the user to database
 			$user->save();
 		} catch(Exception $e){
