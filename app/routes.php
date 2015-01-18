@@ -43,4 +43,5 @@ Route::get('user/menuoverview', 'UserController@showMenuOverview');
 
 Route::get('user/profile', 'UserController@showProfile');
 
-
+# Menu Routing
+Route::post('menu/edit', 'MenuController@editMenu');

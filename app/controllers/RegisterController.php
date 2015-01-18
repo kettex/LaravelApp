@@ -6,25 +6,31 @@ class RegisterController extends BaseController {
 	{
 		// Always run csrf protection before the request when posting
 		$this->beforeFilter('csrf', array('on' => 'post'));
-
-		// Here's something that happens after the request
-		$this->afterFilter(function() {
-			// something
-		});
 	}
 
 	public function showRegisterForm()
 	{
 		$user = new User();
+
+		// fill register form with values of empty user
 		return View::make('user/register', compact('user'));
 	}
 
 	public function registerUser(){
 
 		$user = new User();
-		$user->fill(Input::all());
 
-		$user->save();
+		try{
+			// fill the user with values of the form
+			$user->fill(Input::except('repeatPassword'));
+
+			// ToDo hash password!! Send mail notification!!
+			// save the user to database
+			$user->save();
+		} catch(Exception $e){
+			// ToDo: Something went wrong --> logging, ErrorHandling!!
+		}
+
 		return Redirect::to('/');
 	}
 }

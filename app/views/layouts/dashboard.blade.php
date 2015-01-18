@@ -71,11 +71,6 @@
             </div>
         </div>
     </div>
-    {{--<footer class="templatemo-footer">
-        <div class="templatemo-copyright">
-            <p>Copyright &copy; 2014 Spendl/Kettl</p>
-        </div>
-    </footer>--}}
 </div>
 
 <script src="{{ URL::asset('dashboard/js/jquery.min.js') }}"></script>

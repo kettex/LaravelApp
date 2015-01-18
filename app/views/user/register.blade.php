@@ -25,27 +25,17 @@
             <div class="row">
                 <div class="col-md-12 ">
                     <label for="CompanyName">Company</label>
-                    <input type="text" class="form-control" id="CompanyName" name="CompanyName" placeholder="Company"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 ">
-                    <label for="FirstName">Firstname</label>
-                    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="Firstname"/>
-                </div>
-                <div class="col-md-6 ">
-                    <label for="LastName">Lastname</label>
-                    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Lastname"/>
+                    <input type="text" class="form-control" id="CompanyName" name="company" placeholder="Company"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 ">
                     <label for="UserName">Username</label>
-                    <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Username"/>
+                    <input type="text" class="form-control" id="UserName" name="userName" placeholder="Username"/>
                 </div>
                 <div class="col-md-6 ">
                     <label for="EMail">E-Mail</label>
-                    <input type="email" class="form-control" id="EMail" name="EMail" placeholder="E-Mail"/>
+                    <input type="email" class="form-control" id="EMail" name="email" placeholder="E-Mail"/>
                 </div>
             </div>
             <div class="row">
@@ -61,17 +51,17 @@
             <div class="row">
                 <div class="col-md-12 ">
                     <label for="DeliveryAddress">Delivery Address</label>
-                    <input type="text" class="form-control" id="DeliveryAddress" name="DeliveryAddress" placeholder="Delivery Address"/>
+                    <input type="text" class="form-control" id="DeliveryAddress" name="deliveryAddress" placeholder="Delivery Address"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 ">
                     <label for="DeliveryZip">ZIP</label>
-                    <input type="text" class="form-control" id="DeliveryZip" name="DeliveryZip" placeholder="ZIP"/>
+                    <input type="text" class="form-control" id="DeliveryZip" name="zip" placeholder="ZIP"/>
                 </div>
                 <div class="col-md-8 ">
                     <label for="DeliveryCity">City</label>
-                    <input type="text" class="form-control" name="City" id="City" placeholder="City"/>
+                    <input type="text" class="form-control" name="city" id="City" placeholder="City"/>
                 </div>
             </div>
 
