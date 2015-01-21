@@ -166,13 +166,13 @@
         sortable: true,
         maintainSelected: false,
         searchTimeOut: 500,
-        iconsPrefix: 'glyphicon', // glyphicon of fa (font awesome)
+        iconsPrefix: 'fa', // glyphicon of fa (font awesome)
         icons: {
-            paginationSwitchDown: 'glyphicon-collapse-down icon-chevron-down',
-            paginationSwitchUp: 'glyphicon-collapse-up icon-chevron-up',
-            refresh: 'glyphicon-refresh icon-refresh',
-            toggle: 'glyphicon-list-alt icon-list-alt',
-            columns: 'glyphicon-th icon-th'
+            paginationSwitchDown: 'glyphicon-collapse-down fa-chevron-down',
+            paginationSwitchUp: 'glyphicon-collapse-up fa-chevron-up',
+            refresh: 'glyphicon-refresh fa-refresh',
+            toggle: 'glyphicon-list-alt fa-list-alt',
+            columns: 'glyphicon-th fa-th'
         },
 
         rowStyle: function (row, index) {return {};},

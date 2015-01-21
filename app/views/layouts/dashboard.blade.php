@@ -17,6 +17,7 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ URL::asset('dashboard/css/templatemo_main.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}"/>
     <link rel="stylesheet" href="{{URL::asset('dashboard/css/dropzone.css')}}">
     <link rel="stylesheet" href="{{URL::asset('dashboard/css/basic.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/bootstrap-tables/bootstrap-table.css')}}">

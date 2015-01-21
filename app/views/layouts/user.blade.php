@@ -38,6 +38,7 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ URL::asset('dashboard/css/templatemo_main.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}"/>
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
