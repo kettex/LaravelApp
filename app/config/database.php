@@ -52,12 +52,23 @@ return array(
 			'prefix'   => '',
 		),
 
-		'mysql' => array(
+		/*'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'webtech',
 			'username'  => 'root',
 			'password'  => '',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_general_ci',
+			'prefix'    => '',
+		),*/
+
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'eu-cdbr-azure-west-b.cloudapp.net',
+			'database'  => 'unikluwAKONyoKcd',
+			'username'  => 'bf84dc57b6d901',
+			'password'  => 'f50a178a',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_general_ci',
 			'prefix'    => '',

@@ -26,8 +26,8 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
-
+	// 'url' => 'http://localhost',
+	'url' => 'http://unikluwebtech.azurewebsites.net',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Timezone
