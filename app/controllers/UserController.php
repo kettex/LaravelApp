@@ -7,7 +7,8 @@ class UserController extends BaseController {
 	}
 
 	public function showMenuOverView(){
-		return View::make('user/menuoverview');
+		$menus = DB::table('menus')->orderBy('menuDate', 'asc')->where('menuDate', '>', time())->get();
+		return View::make('user/menuoverview')->with('menus', $menus);
 	}
 
 	public function showProfile(){
