@@ -36,6 +36,9 @@ Route::get('admin/usermanagement', 'AdminController@showUserManagement');
 
 Route::get('admin/signout', 'AdminController@signOut');
 
+# Import Routing
+Route::post('admin/menumangement/importExcel', 'AdminController@importExcel');
+
 # User Routing
 Route::get('user/orderoverview', 'UserController@showOrderOverview');
 

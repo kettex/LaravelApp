@@ -17,4 +17,28 @@ class AdminController extends BaseController {
 	public function signOut(){
 		return View::make('hello');
 	}
+
+	public function importExcel(){
+		$file = Input::file('file');
+
+		$results = Excel::load($file, function($reader){
+
+		})->get();
+
+		foreach($results as $menu){
+			try{
+				$newMenu = new Menu();
+				$newMenu->menuDate = $menu->menudate;
+				$newMenu->menuTitle = $menu->menutitle;
+				$newMenu->menuDescription = $menu->menudescription;
+				$newMenu->isActive = false;
+				$newMenu->save();
+			} catch (Exception $e){
+				$blub = $e;
+			}
+
+		}
+
+		return $file;
+	}
 }

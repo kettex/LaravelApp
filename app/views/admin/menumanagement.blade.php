@@ -19,15 +19,14 @@
         <div class="col-md-12 col-sm-12">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="templatemo-tabs">
-                <li class="active"><a href="#home" role="tab" data-toggle="tab">Online Menus</a></li>
-                <li><a href="#profile" role="tab" data-toggle="tab">Offline Menus</a></li>
-                <li><a href="#messages" role="tab" data-toggle="tab">Import Excel</a></li>
-                <li><a href="#settings" role="tab" data-toggle="tab">Import CSV</a></li>
+                <li class="active"><a href="#onlineMenus" role="tab" data-toggle="tab">Online Menus</a></li>
+                <li><a href="#offlineMenus" role="tab" data-toggle="tab">Offline Menus</a></li>
+                <li><a href="#importExcel" role="tab" data-toggle="tab">Import Excel</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
+                <div class="tab-pane fade in active" id="onlineMenus">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
@@ -177,7 +176,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="profile">
+                <div class="tab-pane fade" id="offlineMenus">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
@@ -327,12 +326,8 @@
                         </table>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="messages">
-                    <form action="/file-upload"
-                          class="dropzone"></form>
-                </div>
-                <div class="tab-pane fade" id="settings">
-                    <form action="/file-upload"
+                <div class="tab-pane fade" id="importExcel">
+                    <form action="/admin/menumangement/importExcel"
                           class="dropzone"></form>
                 </div>
             </div>
