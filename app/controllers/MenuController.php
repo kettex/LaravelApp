@@ -75,7 +75,6 @@ class MenuController extends BaseController
 //get the subview of the array
         $result = array_slice($result, $offset, $limit);
 
-
         echo "{";
         echo '"total": ' . $count . ',';
         echo '"rows": ';
@@ -122,7 +121,6 @@ class MenuController extends BaseController
 
 //get the subview of the array
         $result = array_slice($result, $offset, $limit);
-
 
         echo "{";
         echo '"total": ' . $count . ',';

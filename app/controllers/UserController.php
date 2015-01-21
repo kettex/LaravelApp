@@ -13,4 +13,68 @@ class UserController extends BaseController {
 	public function showProfile(){
 		return View::make('user/profile');
 	}
+
+	// Server side search, paging and sorting for user table in admin/usermanagement
+	public function getUsers(){
+		if (isset($_GET["limit"])) {
+			$limit = $_GET["limit"];
+		} else {
+			$limit = 10;
+		}
+
+		if (isset($_GET["offset"])) {
+			$offset = $_GET["offset"];
+		} else {
+			$offset = 0;
+		}
+
+		if (isset($_GET["sort"])) {
+			$sort = $_GET["sort"];
+		} else {
+			$sort = "";
+		}
+
+		if (isset($_GET["order"])) {
+			$order = $_GET["order"];
+		} else {
+			$order = "asc";
+		}
+
+		if(isset($_GET["search"])) {
+			// string concatination for 'like' keyword in mysql query
+			$search = '%'.$_GET["search"].'%';
+		} else {
+			$search = "";
+		}
+
+		if($search == "") {
+			$result = DB::table('users')->get();
+		} else {
+			$result = DB::table('users')->where(function($query) use ($search) {
+				$query->where('city', 'like', $search)
+					->orwhere('company', 'like', $search)
+					->orwhere('deliveryAddress', 'like', $search)
+					->orwhere('email', 'like', $search)
+					->orwhere('username', 'like', $search)
+					->orwhere('zip', 'like', $search);
+			})->get();
+		}
+
+//get the result size
+		$count = sizeof($result);
+
+//order the array
+		if ($order != "asc") {
+			$result = array_reverse($result);
+		}
+
+//get the subview of the array
+		$result = array_slice($result, $offset, $limit);
+
+		echo "{";
+		echo '"total": ' . $count . ',';
+		echo '"rows": ';
+		echo json_encode($result);
+		echo "}";
+	}
 }

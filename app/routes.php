@@ -41,10 +41,9 @@ Route::post('admin/menumangement/importExcel', 'AdminController@importExcel');
 
 # User Routing
 Route::get('user/orderoverview', 'UserController@showOrderOverview');
-
 Route::get('user/menuoverview', 'UserController@showMenuOverview');
-
 Route::get('user/profile', 'UserController@showProfile');
+Route::get('user/getUsers', 'UserController@getUsers');
 
 # Menu Routing
 Route::post('menu/edit', 'MenuController@editMenu');
