@@ -48,3 +48,5 @@ Route::get('user/profile', 'UserController@showProfile');
 
 # Menu Routing
 Route::post('menu/edit', 'MenuController@editMenu');
+Route::get('menu/getonlinemenus', 'MenuController@getOnlineMenus');
+Route::get('menu/getofflinemenus', 'MenuController@getOfflineMenus');

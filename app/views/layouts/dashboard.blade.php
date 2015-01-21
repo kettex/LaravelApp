@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ URL::asset('dashboard/css/templatemo_main.css') }}">
     <link rel="stylesheet" href="{{URL::asset('dashboard/css/dropzone.css')}}">
     <link rel="stylesheet" href="{{URL::asset('dashboard/css/basic.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap-tables/bootstrap-table.css')}}">
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
@@ -78,6 +79,7 @@
 <script src="{{ URL::asset('dashboard/js/Chart.min.js') }}"></script>
 <script src="{{ URL::asset('dashboard/js/templatemo_script.js') }}"></script>
 <script src="{{URL::asset('dashboard/js/dropzone.js')}}"></script>
+<script src="{{URL::asset('js/bootstrap-table/bootstrap-table.js')}}"></script>
 @yield('scripts')
 </body>
 </html>

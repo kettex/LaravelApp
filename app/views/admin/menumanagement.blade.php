@@ -28,301 +28,41 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="onlineMenus">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover table-bordered">
+                        <table data-toggle="table"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-show-columns="true"
+                               data-pagination="true"
+                               data-page-list="[10, 20, 50, 100]"
+                               data-url="/menu/getonlinemenus"
+                               data-side-pagination="server">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Date</th>
-                                <th>Menu</th>
-                                <th>Order Count</th>
-                                <th>Creation Date</th>
-                                <th>Action</th>
+                                <th data-field="menuDate" data-sortable="true">Date</th>
+                                <th data-field="menuTitle" data-sortable="true">Menu</th>
+                                <th data-field="menuDescription" data-sortable="true">Description</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>18.12.2014 14:00</td>
-                                <td>Menu1</td>
-                                <td>2</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#" onclick="openEditMenuModal()">Edit</a></li>
-                                            <li><a href="#">Take offline</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>18.12.2014 14:00</td>
-                                <td>Menu2</td>
-                                <td>2</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take offline</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>19.12.2014 14:00</td>
-                                <td>Menu1</td>
-                                <td>2</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take offline</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>19.12.2014 14:00</td>
-                                <td>Menu2</td>
-                                <td>2</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take offline</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>22.12.2014 14:00</td>
-                                <td>Menu1</td>
-                                <td>2</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take offline</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>22.12.2014 14:00</td>
-                                <td>Menu2</td>
-                                <td>2</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take offline</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="offlineMenus">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover table-bordered">
+                        <table data-toggle="table"
+                               data-show-refresh="true"
+                               data-show-toggle="true"
+                               data-show-columns="true"
+                               data-pagination="true"
+                               data-page-list="[10, 20, 50, 100]"
+                               data-url="/menu/getofflinemenus"
+                               data-side-pagination="server">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Date</th>
-                                <th>Menu</th>
-                                <th>Order Count</th>
-                                <th>Creation Date</th>
-                                <th>Action</th>
+                                <th data-field="menuDate" data-sortable="true">Date</th>
+                                <th data-field="menuTitle" data-sortable="true">Menu</th>
+                                <th data-field="menuDescription" data-sortable="true">Description</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>07.01.2015 14:00</td>
-                                <td>Menu1</td>
-                                <td>0</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take online</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>07.01.2015 14:00</td>
-                                <td>Menu2</td>
-                                <td>0</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take online</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>08.01.2015 14:00</td>
-                                <td>Menu1</td>
-                                <td>0</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take online</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>08.01.2015 14:00</td>
-                                <td>Menu2</td>
-                                <td>0</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take online</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>09.01.2015 14:00</td>
-                                <td>Menu1</td>
-                                <td>0</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take online</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>09.01.2015 14:00</td>
-                                <td>Menu2</td>
-                                <td>0</td>
-                                <td>07.12.2014 09:00</td>
-                                <td>
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-info">Action</button>
-                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Edit</a></li>
-                                            <li><a href="#">Take online</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
