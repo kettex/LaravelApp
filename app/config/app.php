@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,8 +26,8 @@ return array(
 	|
 	*/
 
-	// 'url' => 'http://localhost',
-	'url' => 'http://unikluwebtech.azurewebsites.net',
+	 'url' => 'http://localhost',
+	//'url' => 'http://unikluwebtech.azurewebsites.net',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Timezone
@@ -121,7 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Maatwebsite\Excel\ExcelServiceProvider'
+		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Nathanmac\GUID\GUIDServiceProvider'
 
 		// Specific laravel providers
 

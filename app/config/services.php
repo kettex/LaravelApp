@@ -12,20 +12,20 @@ return array(
 	| default location for this type of information, allowing packages
 	| to have a conventional place to find your various credentials.
 	|
-	*/
+
 
 	'mailgun' => array(
-		'domain' => '',
-		'secret' => '',
-	),
+		'domain' => 'sandboxadc4af2870434840a0b740dcec9a00bb.mailgun.org',
+		'secret' => 'key-545d575f99fda2c8b325b5093069cb58',
+	),*/
 
 	'mandrill' => array(
-		'secret' => '',
+		'secret' => 'ZdpztVDO9GOJu0ImQ4GjMQ',
 	),
 
-	'stripe' => array(
+/*	'stripe' => array(
 		'model'  => 'User',
 		'secret' => '',
 	),
-
+*/
 );

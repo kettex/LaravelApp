@@ -7,7 +7,9 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-ide-helper": "v1.11.3",
-	  	"maatwebsite/excel": "~1.2.1"
+	  	"maatwebsite/excel": "~1.2.1",
+	  	"nathanmac/laravel-guid": "dev-master",
+	  	"guzzlehttp/guzzle": "~4.0"
 	},
 	"autoload": {
 		"classmap": [

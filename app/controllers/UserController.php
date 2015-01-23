@@ -78,4 +78,27 @@ class UserController extends BaseController {
 		echo json_encode($result);
 		echo "}";
 	}
+
+	public function authUser(){
+		if(!isset($_POST['username']) || !isset($_POST['password'])){
+			// ToDo error site
+			return;
+		}
+
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+
+		// Authenticate user und remember him --> set second parameter to 'true'
+		if(Auth::attempt(array('username' => $username, 'password' => $password, 'isActive' => 1), true)){
+			if(Auth::user()->isAdmin){
+				return Redirect::intended('admin/dashboard');
+			}
+			else{
+				return Redirect::intended('user/orderoverview');
+			}
+		}
+
+		// ToDo error site
+		return;
+	}
 }

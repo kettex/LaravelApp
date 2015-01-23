@@ -13,39 +13,56 @@
 
 # Public Website Routing
 Route::get('/', 'HomeController@showWelcome');
-
 Route::get('about/index','AboutController@about');
-
 Route::get('products/index', 'ProductsController@products');
-
 Route::get('contact/index', 'ContactController@contact');
 
 # Login/Register Routing
 Route::get('login', 'LoginController@showLogin');
-
 Route::get('register', 'RegisterController@showRegisterForm');
+Route::get('activateAccount', 'RegisterController@setUserActive');
+Route::post('authenticate', 'UserController@authUser');
 
 Route::post('register', 'RegisterController@registerUser');
 
-# Admin Routing
-Route::get('admin/dashboard', 'AdminController@showDashboard');
-
-Route::get('admin/menumanagement', 'AdminController@showMenuManagement');
-
-Route::get('admin/usermanagement', 'AdminController@showUserManagement');
-
+# Sign out route mustn't be protected
 Route::get('admin/signout', 'AdminController@signOut');
 
-# Import Routing
-Route::post('admin/menumangement/importExcel', 'AdminController@importExcel');
+# Filter for admin users
+Route::filter('admin', function() {
+    if(!Auth::user()->isAdmin){
+        return Redirect::to('/');
+    }
+});
 
-# User Routing
-Route::get('user/orderoverview', 'UserController@showOrderOverview');
-Route::get('user/menuoverview', 'UserController@showMenuOverview');
-Route::get('user/profile', 'UserController@showProfile');
-Route::get('user/getUsers', 'UserController@getUsers');
+# Filter for normal users
+Route::filter('user', function(){
+    if(Auth::user()->isAdmin != 0){
+        return Redirect::to('/');
+    }
+});
 
-# Menu Routing
-Route::post('menu/edit', 'MenuController@editMenu');
-Route::get('menu/getonlinemenus', 'MenuController@getOnlineMenus');
-Route::get('menu/getofflinemenus', 'MenuController@getOfflineMenus');
+# Protected Routes (only for authenticated admin users)
+Route::group(['before' => 'auth|admin'], function(){
+    # Admin Routing
+    Route::get('admin/dashboard', 'AdminController@showDashboard');
+    Route::get('admin/menumanagement', 'AdminController@showMenuManagement');
+    Route::get('admin/usermanagement', 'AdminController@showUserManagement');
+
+    # Import Routing
+    Route::post('admin/menumangement/importExcel', 'AdminController@importExcel');
+
+    # Menu Routing
+    Route::post('menu/edit', 'MenuController@editMenu');
+    Route::get('menu/getonlinemenus', 'MenuController@getOnlineMenus');
+    Route::get('menu/getofflinemenus', 'MenuController@getOfflineMenus');
+});
+
+# Protected Routes (only for authenticated normal users)
+Route::group(['before' => 'auth|user'], function(){
+    # User Routing
+    Route::get('user/orderoverview', 'UserController@showOrderOverview');
+    Route::get('user/menuoverview', 'UserController@showMenuOverview');
+    Route::get('user/profile', 'UserController@showProfile');
+    Route::get('user/getUsers', 'UserController@getUsers');
+});

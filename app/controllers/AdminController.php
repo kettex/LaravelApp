@@ -15,6 +15,7 @@ class AdminController extends BaseController {
 	}
 
 	public function signOut(){
+		Auth::logout();
 		return View::make('hello');
 	}
 

@@ -25,13 +25,39 @@ class RegisterController extends BaseController {
 			$user->fill(Input::except('repeatPassword'));
 			$user->password = Hash::make($user->password);
 			$user->isActive = false;
-			// ToDo Send mail notification!!
+			$email = $user->email;
+			$regId = GUID::generate();
+			$user->registrationId = $regId;
 			// save the user to database
 			$user->save();
+
+			// Send mail for activating
+			Mail::send('emails.auth.activate', array('msg' => 'Please click the following link or copy it to your browser to activate your user account! http://localhost:8000/activateAccount?registrationId='.$regId), function($message){
+				// ToDo Development purposes only!!
+				$message->to('alexander@imendo.at')->subject('Activate account');
+			});
 		} catch(Exception $e){
 			// ToDo: Something went wrong --> logging, ErrorHandling!!
+			$blub = $e;
 		}
 
 		return Redirect::to('/');
+	}
+
+	// method which is called, when user clicks the link in the e-mail for activating his account
+	public function setUserActive(){
+		if (!isset($_GET["registrationId"])) {
+			// ToDo make error view
+			// Get parameter 'registrationId' was not set --> return error view
+
+			return;
+		}
+
+		// set the specified user 'active' in database
+		$regId = $_GET["registrationId"];
+		DB::table('users')->where('registrationId', $regId)->update(array('isActive' => 1));
+
+		// ToDo make success view
+		return;
 	}
 }
