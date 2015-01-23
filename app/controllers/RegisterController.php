@@ -38,10 +38,10 @@ class RegisterController extends BaseController {
 			});
 		} catch(Exception $e){
 			// ToDo: Something went wrong --> logging, ErrorHandling!!
-			$blub = $e;
+			echo $e;
 		}
 
-		return Redirect::to('/');
+		//return Redirect::to('/');
 	}
 
 	// method which is called, when user clicks the link in the e-mail for activating his account
