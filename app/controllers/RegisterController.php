@@ -25,6 +25,7 @@ class RegisterController extends BaseController {
 			$user->fill(Input::except('repeatPassword'));
 			$user->password = Hash::make($user->password);
 			$user->isActive = false;
+			$user->isAdmin = false;
 			$email = $user->email;
 			$regId = GUID::generate();
 			$user->registrationId = $regId;
@@ -38,10 +39,10 @@ class RegisterController extends BaseController {
 			});
 		} catch(Exception $e){
 			// ToDo: Something went wrong --> logging, ErrorHandling!!
-			echo $e;
+
 		}
 
-		//return Redirect::to('/');
+		return Redirect::to('/');
 	}
 
 	// method which is called, when user clicks the link in the e-mail for activating his account
