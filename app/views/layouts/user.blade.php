@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{{ URL::asset('dashboard/css/templatemo_main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}"/>
     <link rel="stylesheet" href="{{URL::asset('css/bootstrap-tables/bootstrap-table.css')}}"
+    <link rel="stylesheet" href="{{ URL::asset('css/formvalidation/formValidation.min.css') }}"/>
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
@@ -94,11 +95,6 @@
             </div>
         </div>
     </div>
-    {{--<footer class="templatemo-footer">
-        <div class="templatemo-copyright">
-            <p>Copyright &copy; 2014 Spendl/Kettl</p>
-        </div>
-    </footer>--}}
 </div>
 
 <script src="{{ URL::asset('dashboard/js/jquery.min.js') }}"></script>
@@ -106,6 +102,9 @@
 <script src="{{ URL::asset('dashboard/js/Chart.min.js') }}"></script>
 <script src="{{ URL::asset('dashboard/js/templatemo_script.js') }}"></script>
 <script src="{{URL::asset('js/bootstrap-table/bootstrap-table.js')}}"></script>
+<!--bootstrap.min.js must be loaded from formvalidation because it's not the same bootstrap.js like from getbootstrap.com!!!!-->
+<script src="{{ URL::asset('js/formvalidation/formValidation.min.js') }}"></script>
+<script src="{{ URL::asset('js/formvalidation/bootstrap.min.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

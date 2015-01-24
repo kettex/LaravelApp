@@ -15,7 +15,7 @@
 @extends('layouts.user')
 @section('content')
 
-    {{ Form::model($user, ['method' => 'post', 'class' => 'form-horizontal templatemo-signin-form']) }}
+    {{ Form::model($user, ['method' => 'post', 'class' => 'form-horizontal templatemo-signin-form', 'id' => 'updateProfileForm']) }}
     <div class="row margin-bottom-15">
         <div class="col-md-12">
             <label for="company" class="control-label">Company</label>
@@ -64,5 +64,61 @@
         $("#orderoverview").removeClass('active');
         $("#profile").removeClass('active');
         $("#profile").addClass('active');
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#updateProfileForm').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: null,
+                    invalid: null,
+                    validating: null
+                },
+                fields: {
+                    company: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The company is required'
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The email address is required'
+                            },
+                            emailAddress: {
+                                message: 'The value is not a valid email address'
+                            }
+                        }
+                    },
+                    deliveryAddress: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The delivery address is required'
+                            },
+                            regexp: {
+                                message: 'The delivery address is not valid',
+                                regexp: /([a-zA-Z\s\.\-\ß]+)\s(.*[0-9]+.*)/i
+                            }
+                        }
+                    },
+                    zip: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The zip code is required'
+                            }
+                        }
+                    },
+                    city: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The city is required'
+                            }
+                        }
+                    }
+                }
+            });
+        });
     </script>
 @stop
