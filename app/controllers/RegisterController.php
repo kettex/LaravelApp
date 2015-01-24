@@ -20,23 +20,31 @@ class RegisterController extends BaseController {
 
 		$user = new User();
 
-		try{
-			// fill the user with values of the form
-			$user->fill(Input::except('repeatPassword'));
-			$user->password = Hash::make($user->password);
-			$user->isActive = false;
-			$user->isAdmin = false;
-			$email = $user->email;
-			$regId = GUID::generate();
-			$user->registrationId = $regId;
-			// save the user to database
-			$user->save();
+		// Make validator
+		$validator = User::validateRegisterModel(Input::all());
 
-			// Send mail for activating
-			Mail::send('emails.auth.activate', array('msg' => 'Please click the following link to activate your user account!', 'link' => 'http://localhost:8000/activateAccount?registrationId='.$regId), function($message){
-				// ToDo Development purposes only!!
-				$message->to('alexander@imendo.at')->subject('Activate account');
-			});
+		try{
+			// Validate the input
+			if($validator->passes()){
+				// fill the user with values of the form
+				$user->fill(Input::except('password_confirmation'));
+				$user->password = Hash::make($user->password);
+				$user->isActive = false;
+				$user->isAdmin = false;
+				$email = $user->email;
+				$regId = GUID::generate();
+				$user->registrationId = $regId;
+				// save the user to database
+				$user->save();
+
+				// Send mail for activating
+				Mail::send('emails.auth.activate', array('msg' => 'Please click the following link to activate your user account!', 'link' => 'http://localhost:8000/activateAccount?registrationId='.$regId), function($message){
+					// ToDo Development purposes only!!
+					$message->to('alexander@imendo.at')->subject('Activate account');
+				});
+			} else {
+				return Redirect::to('register')->withErrors($validator->getMessages());
+			}
 		} catch(Exception $e){
 			return Redirect::to('error');
 		}

@@ -20,8 +20,6 @@ class UserController extends BaseController
 
     public function updateProfile()
     {
-        // ToDo validate input
-
         $authUser = Auth::user();
 
         try{
@@ -55,11 +53,25 @@ class UserController extends BaseController
                 $city = $authUser->city;
             }
 
-            // update the userprofile with data of request
-            DB::table('users')->where('id', Auth::user()->id)->update(array('company' => $company, 'email' => $email, 'deliveryAddress' => $deliveryAddress, 'zip' => $zip, 'city' => $city));
+            $input = array(
+                'company' => $company,
+                'email' => $email,
+                'deliveryAddress' => $deliveryAddress,
+                'zip' => $zip,
+                'city' => $city
+            );
 
-            // for showing the updated data --> fetch authenticated user from DB and pass it to view
-            return View::make('user/profile', array('user' => User::find(Auth::user()->id)));
+            // Make validator
+            $validator = User::validateProfileModel($input);
+
+            if($validator->passes()){
+                // update the userprofile with data of request
+                DB::table('users')->where('id', Auth::user()->id)->update(array('company' => $company, 'email' => $email, 'deliveryAddress' => $deliveryAddress, 'zip' => $zip, 'city' => $city));
+                // for showing the updated data --> fetch authenticated user from DB and pass it to view
+                return View::make('user/profile', array('user' => User::find(Auth::user()->id)));
+            } else{
+                return Redirect::to('user/profile', array('user' => User::find(Auth::user()->id)))->withErrors($validator->getMessages());
+            }
         } catch (Exception $e){
             return Redirect::to('error');
         }

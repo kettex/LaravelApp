@@ -36,4 +36,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
+
+	public static function validateRegisterModel($input) {
+		$rules = array(
+			'company' => 'Required',
+			'username' => 'Required|Min:6|Max:30|Unique:users',
+			'email' => 'Required|Email|Unique:users',
+			'password' => 'Required|Min:6|Max:30|Confirmed',
+			'password_confirmation' => 'Required|Min:6|Max:30',
+			'deliveryAddress' => 'Regex:/([a-zA-Z\s\.\-\ß]+)\s(.*[0-9]+.*)/i',
+			'zip' => 'Required',
+			'city' => 'Required'
+		);
+
+		return Validator::make($input, $rules);
+	}
+
+	public static function validateProfileModel($input) {
+		$rules = array(
+			'company' => 'Required',
+			'email' => 'Required|Email|Unique:users',
+			'deliveryAddress' => 'Regex:/([a-zA-Z\s\.\-\ß]+)\s(.*[0-9]+.*)/i',
+			'zip' => 'Required',
+			'city' => 'Required'
+		);
+
+		return Validator::make($input, $rules);
+	}
 }

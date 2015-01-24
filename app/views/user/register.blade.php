@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-6 ">
                 <label for="ConfirmPassword">Confirm Password</label>
-                <input type="password" class="form-control" id="RepeatPassword" name="repeatPassword"
+                <input type="password" class="form-control" id="RepeatPassword" name="password_confirmation"
                        placeholder="Password"/>
             </div>
         </div>
@@ -123,7 +123,7 @@
                                 message: 'The password is required'
                             },
                             identical: {
-                                field: 'repeatPassword',
+                                field: 'password_confirmation',
                                 message: 'The password and its confirm are not the same'
                             },
                             stringLength: {
@@ -133,7 +133,7 @@
                             }
                         }
                     },
-                    repeatPassword: {
+                    password_confirmation: {
                         notEmpty: {
                             message: 'The password confirmation is required'
                         },
