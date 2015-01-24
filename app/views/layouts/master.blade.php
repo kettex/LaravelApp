@@ -24,16 +24,17 @@
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('css/templatemo_style.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('css/templatemo_misc.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('css/flexslider.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('css/testimonails-slider.css') }}"/>
+    <link rel="stylesheet" href="{{ URL::asset('css/formvalidation/formValidation.min.css') }}"/>
+
+
 
     <script src="{{ URL::asset('js/vendor/modernizr-2.6.1-respond-1.1.0.min.js') }}"></script>
-
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -154,6 +155,9 @@
 <script src="{{ URL::asset('js/vendor/jquery.gmap3.min.js') }}"></script>
 <script src="{{ URL::asset('js/plugins.js') }}"></script>
 <script src="{{ URL::asset('js/main.js') }}"></script>
-
+<!--bootstrap.min.js must be loaded from formvalidation because it's not the same bootstrap.js like from getbootstrap.com!!!!-->
+<script src="{{ URL::asset('js/formvalidation/formValidation.min.js') }}"></script>
+<script src="{{ URL::asset('js/formvalidation/bootstrap.min.js') }}"></script>
+@yield('scripts')
 </body>
 </html>
