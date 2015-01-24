@@ -26,7 +26,6 @@
             <div class="col-md-12 ">
                 <label for="CompanyName">Company</label>
                 <input type="text" class="form-control" id="CompanyName" name="company" placeholder="Company"/>
-                <span class="help-block" id="companyMessage"></span>
             </div>
         </div>
         <div class="row">
@@ -91,7 +90,6 @@
                 fields: {
                     company: {
                         validators: {
-                            err: '#companyMessage',
                             notEmpty: {
                                 message: 'The company is required'
                             }
