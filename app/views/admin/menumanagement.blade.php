@@ -55,9 +55,12 @@
                                data-pagination="true"
                                data-page-list="[10, 20, 50, 100]"
                                data-url="/menu/getofflinemenus"
-                               data-side-pagination="server">
+                               data-side-pagination="server"
+                               data-click-to-select="true"
+                                id="offlineMenusTable">
                             <thead>
                             <tr>
+                                <th data-field="isActive" data-checkbox="true">Online</th>
                                 <th data-field="menuDate" data-sortable="true">Date</th>
                                 <th data-field="menuTitle" data-sortable="true">Menu</th>
                                 <th data-field="menuDescription" data-sortable="true">Description</th>
@@ -65,6 +68,7 @@
                             </thead>
                         </table>
                     </div>
+                    <button type="button" class="btn btn-default" onclick="setMenusOnline()">Set online</button>
                 </div>
                 <div class="tab-pane fade" id="importExcel">
                     <form action="/admin/menumangement/importExcel"

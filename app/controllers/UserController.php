@@ -1,104 +1,200 @@
 <?php
 
-class UserController extends BaseController {
-	public function showOrderOverview()
-	{
-		return View::make('user/orderoverview');
-	}
+class UserController extends BaseController
+{
+    public function showOrderOverview()
+    {
+        return View::make('user/orderoverview');
+    }
 
-	public function showMenuOverView(){
-		$menus = DB::table('menus')->orderBy('menuDate', 'asc')->where('menuDate', '>', time())->get();
-		return View::make('user/menuoverview')->with('menus', $menus);
-	}
+    public function showMenuOverView()
+    {
+        $menus = DB::table('menus')->orderBy('menuDate', 'asc')->where('menuDate', '>', time())->where('isActive', 1)->get();
+        return View::make('user/menuoverview')->with('menus', $menus);
+    }
 
-	public function showProfile(){
-		return View::make('user/profile');
-	}
+    public function showProfile()
+    {
+        return View::make('user/profile', array('user' => Auth::user()));
+    }
 
-	// Server side search, paging and sorting for user table in admin/usermanagement
-	public function getUsers(){
-		if (isset($_GET["limit"])) {
-			$limit = $_GET["limit"];
-		} else {
-			$limit = 10;
-		}
+    public function updateProfile()
+    {
+        // ToDo validate input
 
-		if (isset($_GET["offset"])) {
-			$offset = $_GET["offset"];
-		} else {
-			$offset = 0;
-		}
+        $authUser = Auth::user();
 
-		if (isset($_GET["sort"])) {
-			$sort = $_GET["sort"];
-		} else {
-			$sort = "";
-		}
+        try{
+            if (isset($_POST['company'])) {
+                $company = $_POST['company'];
+            } else {
+                $company = $authUser->company;
+            }
 
-		if (isset($_GET["order"])) {
-			$order = $_GET["order"];
-		} else {
-			$order = "asc";
-		}
+            if (isset($_POST['email'])) {
+                $email = $_POST['email'];
+            } else {
+                $email = $authUser->email;
+            }
 
-		if(isset($_GET["search"])) {
-			// string concatination for 'like' keyword in mysql query
-			$search = '%'.$_GET["search"].'%';
-		} else {
-			$search = "";
-		}
+            if (isset($_POST['deliveryAddress'])) {
+                $deliveryAddress = $_POST['deliveryAddress'];
+            } else {
+                $deliveryAddress = $authUser->deliveryAddress;
+            }
 
-		if($search == "") {
-			$result = DB::table('users')->get();
-		} else {
-			$result = DB::table('users')->where(function($query) use ($search) {
-				$query->where('city', 'like', $search)
-					->orwhere('company', 'like', $search)
-					->orwhere('deliveryAddress', 'like', $search)
-					->orwhere('email', 'like', $search)
-					->orwhere('username', 'like', $search)
-					->orwhere('zip', 'like', $search);
-			})->get();
-		}
+            if (isset($_POST['zip'])) {
+                $zip = $_POST['zip'];
+            } else {
+                $zip = $authUser->zip;
+            }
+
+            if (isset($_POST['city'])) {
+                $city = $_POST['city'];
+            } else {
+                $city = $authUser->city;
+            }
+
+            // update the userprofile with data of request
+            DB::table('users')->where('id', Auth::user()->id)->update(array('company' => $company, 'email' => $email, 'deliveryAddress' => $deliveryAddress, 'zip' => $zip, 'city' => $city));
+
+            // for showing the updated data --> fetch authenticated user from DB and pass it to view
+            return View::make('user/profile', array('user' => User::find(Auth::user()->id)));
+        } catch (Exception $e){
+            return Redirect::to('error');
+        }
+    }
+
+    // Server side search, paging and sorting for user table in admin/usermanagement
+    public function getUsers()
+    {
+        if (isset($_GET["limit"])) {
+            $limit = $_GET["limit"];
+        } else {
+            $limit = 10;
+        }
+
+        if (isset($_GET["offset"])) {
+            $offset = $_GET["offset"];
+        } else {
+            $offset = 0;
+        }
+
+        if (isset($_GET["sort"])) {
+            $sort = $_GET["sort"];
+        } else {
+            $sort = "";
+        }
+
+        if (isset($_GET["order"])) {
+            $order = $_GET["order"];
+        } else {
+            $order = "asc";
+        }
+
+        if (isset($_GET["search"])) {
+            // string concatination for 'like' keyword in mysql query
+            $search = '%' . $_GET["search"] . '%';
+        } else {
+            $search = "";
+        }
+
+        if ($search == "") {
+            $result = DB::table('users')->get();
+        } else {
+            $result = DB::table('users')->where(function ($query) use ($search) {
+                $query->where('city', 'like', $search)
+                    ->orwhere('company', 'like', $search)
+                    ->orwhere('deliveryAddress', 'like', $search)
+                    ->orwhere('email', 'like', $search)
+                    ->orwhere('username', 'like', $search)
+                    ->orwhere('zip', 'like', $search);
+            })->get();
+        }
+
+        // get the result size
+        $count = sizeof($result);
+
+        // order the array
+        if ($order != "asc") {
+            $result = array_reverse($result);
+        }
+
+        // get the subview of the array
+        $result = array_slice($result, $offset, $limit);
+
+        echo "{";
+        echo '"total": ' . $count . ',';
+        echo '"rows": ';
+        echo json_encode($result);
+        echo "}";
+    }
+
+    public function authUser()
+    {
+        if (!isset($_POST['username']) || !isset($_POST['password'])) {
+            return Redirect::to('login');
+        }
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        // Authenticate user und remember him --> set second parameter to 'true'
+        if (Auth::attempt(array('username' => $username, 'password' => $password, 'isActive' => 1), true)) {
+            if (Auth::user()->isAdmin) {
+                return Redirect::intended('admin/dashboard');
+            } else {
+                return Redirect::intended('user/orderoverview');
+            }
+        }
+
+        return Redirect::to('login');
+    }
+
+    // Server side paging and sorting for latestOrderedMenus table in user/orderoverview
+    public function getLatestOrderedMenus()
+    {
+        if (isset($_GET["limit"])) {
+            $limit = $_GET["limit"];
+        } else {
+            $limit = 10;
+        }
+
+        if (isset($_GET["offset"])) {
+            $offset = $_GET["offset"];
+        } else {
+            $offset = 0;
+        }
+
+        if (isset($_GET["sort"])) {
+            $sort = $_GET["sort"];
+        } else {
+            $sort = "";
+        }
+
+        if (isset($_GET["order"])) {
+            $order = $_GET["order"];
+        } else {
+            $order = "asc";
+        }
+
+        $result = DB::table('orders')->get();
 
 //get the result size
-		$count = sizeof($result);
+        $count = sizeof($result);
 
 //order the array
-		if ($order != "asc") {
-			$result = array_reverse($result);
-		}
+        if ($order != "asc") {
+            $result = array_reverse($result);
+        }
 
 //get the subview of the array
-		$result = array_slice($result, $offset, $limit);
+        $result = array_slice($result, $offset, $limit);
 
-		echo "{";
-		echo '"total": ' . $count . ',';
-		echo '"rows": ';
-		echo json_encode($result);
-		echo "}";
-	}
-
-	public function authUser(){
-		if(!isset($_POST['username']) || !isset($_POST['password'])){
-			// ToDo error site
-			return;
-		}
-
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-
-		// Authenticate user und remember him --> set second parameter to 'true'
-		if(Auth::attempt(array('username' => $username, 'password' => $password, 'isActive' => 1), true)){
-			if(Auth::user()->isAdmin){
-				return Redirect::intended('admin/dashboard');
-			}
-			else{
-				return Redirect::intended('user/orderoverview');
-			}
-		}
-
-		// ToDo error site
-		return;
-	}
+        echo "{";
+        echo '"total": ' . $count . ',';
+        echo '"rows": ';
+        echo json_encode($result);
+        echo "}";
+    }
 }

@@ -5,8 +5,6 @@ class MenuController extends BaseController
 
     public function __construct()
     {
-        // Always run csrf protection before the request when posting
-        $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
     public function editMenu()
@@ -16,23 +14,27 @@ class MenuController extends BaseController
             return Redirect::to('admin/menumanagement');
         }
 
-        // get the id out of the request params and find the right menu in database
-        $menu = Menu::find(Input::get('id'));
+        try{
+            // get the id out of the request params and find the right menu in database
+            $menu = Menu::find(Input::get('id'));
 
-        // return to management site if no menu was found by id!!
-        if ($menu == null) {
+            // return to management site if no menu was found by id!!
+            if ($menu == null) {
+                return Redirect::to('admin/menumanagement');
+            }
+
+            // update the menu
+            $menu->menuDate = Input::get('menuDate');
+            $menu->menuDescription = Input::get('menuDescription');
+            $menu->menuTitle = Input::get('menuTitle');
+
+            //
+            $menu->save();
+
             return Redirect::to('admin/menumanagement');
+        } catch(Exception $e){
+            return Redirect::to('error');
         }
-
-        // update the menu
-        $menu->menuDate = Input::get('menuDate');
-        $menu->menuDescription = Input::get('menuDescription');
-        $menu->menuTitle = Input::get('menuTitle');
-
-        //
-        $menu->save();
-
-        return Redirect::to('admin/menumanagement');
     }
 
     // Server side paging and sorting of online menus
@@ -127,5 +129,23 @@ class MenuController extends BaseController
         echo '"rows": ';
         echo json_encode($result);
         echo "}";
+    }
+
+    public function setMenusOnline(){
+        try{
+            // decode the json data from ajax request
+            $data = json_decode($GLOBALS["HTTP_RAW_POST_DATA"]);
+
+            foreach($data as $menu){
+                if($menu->isActive == 0){
+                    continue;
+                }
+
+                // set menu in database active
+                DB::table('menus')->where('id', $menu->id)->update(array('isActive' => 1));
+            }
+        } catch (Exception $e){
+            return null;
+        }
     }
 }

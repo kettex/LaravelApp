@@ -39,6 +39,7 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ URL::asset('dashboard/css/templatemo_main.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}"/>
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap-tables/bootstrap-table.css')}}"
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
@@ -104,6 +105,7 @@
 <script src="{{ URL::asset('dashboard/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('dashboard/js/Chart.min.js') }}"></script>
 <script src="{{ URL::asset('dashboard/js/templatemo_script.js') }}"></script>
+<script src="{{URL::asset('js/bootstrap-table/bootstrap-table.js')}}"></script>
 @yield('scripts')
 </body>
 </html>

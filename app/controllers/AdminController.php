@@ -35,7 +35,8 @@ class AdminController extends BaseController {
 				$newMenu->isActive = false;
 				$newMenu->save();
 			} catch (Exception $e){
-				$blub = $e;
+				// ToDo logging
+				continue;
 			}
 
 		}

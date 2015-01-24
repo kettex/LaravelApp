@@ -56,6 +56,8 @@ Route::group(['before' => 'auth|admin'], function(){
     Route::post('menu/edit', 'MenuController@editMenu');
     Route::get('menu/getonlinemenus', 'MenuController@getOnlineMenus');
     Route::get('menu/getofflinemenus', 'MenuController@getOfflineMenus');
+    Route::post('admin/menu/setOnline', 'MenuController@setMenusOnline');
+    Route::get('user/getUsers', 'UserController@getUsers');
 });
 
 # Protected Routes (only for authenticated normal users)
@@ -64,5 +66,16 @@ Route::group(['before' => 'auth|user'], function(){
     Route::get('user/orderoverview', 'UserController@showOrderOverview');
     Route::get('user/menuoverview', 'UserController@showMenuOverview');
     Route::get('user/profile', 'UserController@showProfile');
-    Route::get('user/getUsers', 'UserController@getUsers');
+    Route::get('user/getLatestOrderedMenus', 'UserController@getLatestOrderedMenus');
+    Route::post('user/profile', 'UserController@updateProfile');
+});
+
+# Error route
+Route::get('error', function(){
+    return View::make('error');
+});
+
+# SuccesfulRegistration route
+Route::get('successfulRegistration', function(){
+    return View::make('successReg');
 });
