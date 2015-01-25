@@ -14,7 +14,7 @@ class MenuController extends BaseController
             return Redirect::to('admin/menumanagement');
         }
 
-        try{
+        try {
             // get the id out of the request params and find the right menu in database
             $menu = Menu::find(Input::get('id'));
 
@@ -32,7 +32,7 @@ class MenuController extends BaseController
             $menu->save();
 
             return Redirect::to('admin/menumanagement');
-        } catch(Exception $e){
+        } catch (Exception $e) {
             return Redirect::to('error');
         }
     }
@@ -131,20 +131,47 @@ class MenuController extends BaseController
         echo "}";
     }
 
-    public function setMenusOnline(){
-        try{
+    public function setMenusOnline()
+    {
+        try {
             // decode the json data from ajax request
             $data = json_decode($GLOBALS["HTTP_RAW_POST_DATA"]);
 
-            foreach($data as $menu){
-                if($menu->isActive == 0){
+            foreach ($data as $menu) {
+                if ($menu->isActive == 0) {
                     continue;
                 }
 
                 // set menu in database active
                 DB::table('menus')->where('id', $menu->id)->update(array('isActive' => 1));
             }
-        } catch (Exception $e){
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
+    // create new orders for users
+    public function orderMenus()
+    {
+        try {
+            // decode the json data from ajax request
+            $data = json_decode($GLOBALS["HTTP_RAW_POST_DATA"]);
+
+            // iterate through data object
+            foreach ($data as $order) {
+                // create new order for earch ordered menu --> if there where 2 menus ordered --> create 2 seperate orders
+                for ($i = 0; $i < $order->orderCount; $i++) {
+                    $newOrder = new Order();
+
+                    $newOrder->orderDate = date("Y-m-d H:i:s");
+                    $newOrder->isCanceled = false;
+                    $newOrder->user_id = Auth::user()->id;
+                    $newOrder->menu_id = $order->id;
+
+                    $newOrder->save();
+                }
+            }
+        } catch (Exception $e) {
             return null;
         }
     }

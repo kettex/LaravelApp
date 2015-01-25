@@ -58,6 +58,9 @@ Route::group(['before' => 'auth|admin'], function(){
     Route::get('menu/getofflinemenus', 'MenuController@getOfflineMenus');
     Route::post('admin/menu/setOnline', 'MenuController@setMenusOnline');
     Route::get('user/getUsers', 'UserController@getUsers');
+
+    # Order Routing
+    Route::get('admin/getLatestOrderedMenus', 'AdminController@getLatestOrderedMenus');
 });
 
 # Protected Routes (only for authenticated normal users)
@@ -68,6 +71,7 @@ Route::group(['before' => 'auth|user'], function(){
     Route::get('user/profile', 'UserController@showProfile');
     Route::get('user/getLatestOrderedMenus', 'UserController@getLatestOrderedMenus');
     Route::post('user/profile', 'UserController@updateProfile');
+    Route::post('menuoverview/orderMenus', 'MenuController@orderMenus');
 });
 
 # Error route

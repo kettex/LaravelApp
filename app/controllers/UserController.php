@@ -190,18 +190,30 @@ class UserController extends BaseController
             $order = "asc";
         }
 
-        $result = DB::table('orders')->get();
+        $resultOrders = DB::table('orders')->where('user_id', Auth::user()->id)->get();
+
+        try{
+            for($i = 0; $i < count($resultOrders); $i++){
+                $menu = Menu::find($resultOrders[$i]->menu_id);
+                $resultOrders[$i]->menuDescription = $menu->menuDescription;
+                $resultOrders[$i]->menuTitle = $menu->menuTitle;
+                $resultOrders[$i]->menuDate = $menu->menuDate;
+            }
+        } catch (Exception $e){
+            $blub = $e;
+        }
+
 
 //get the result size
-        $count = sizeof($result);
+        $count = sizeof($resultOrders);
 
 //order the array
         if ($order != "asc") {
-            $result = array_reverse($result);
+            $result = array_reverse($resultOrders);
         }
 
 //get the subview of the array
-        $result = array_slice($result, $offset, $limit);
+        $result = array_slice($resultOrders, $offset, $limit);
 
         echo "{";
         echo '"total": ' . $count . ',';

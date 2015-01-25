@@ -35,9 +35,9 @@
                data-side-pagination="server">
             <thead>
             <tr>
-                <th data-field="menuDate" data-sortable="true">Date</th>
-                <th data-field="menuTitle" data-sortable="true">Menu</th>
-                <th data-field="menuDescription" data-sortable="true">Description</th>
+                <th data-field="menuDate" data-sortable="false">Date</th>
+                <th data-field="menuTitle" data-sortable="false">Menu</th>
+                <th data-field="menuDescription" data-sortable="false">Description</th>
             </tr>
             </thead>
         </table>

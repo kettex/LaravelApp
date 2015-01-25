@@ -43,4 +43,61 @@ class AdminController extends BaseController {
 
 		return $file;
 	}
+
+	public function getLatestOrderedMenus(){
+		if (isset($_GET["limit"])) {
+			$limit = $_GET["limit"];
+		} else {
+			$limit = 10;
+		}
+
+		if (isset($_GET["offset"])) {
+			$offset = $_GET["offset"];
+		} else {
+			$offset = 0;
+		}
+
+		if (isset($_GET["sort"])) {
+			$sort = $_GET["sort"];
+		} else {
+			$sort = "";
+		}
+
+		if (isset($_GET["order"])) {
+			$order = $_GET["order"];
+		} else {
+			$order = "asc";
+		}
+
+		$resultOrders = DB::table('orders')->get();
+
+		try{
+			for($i = 0; $i < count($resultOrders); $i++){
+				$menu = Menu::find($resultOrders[$i]->menu_id);
+				$resultOrders[$i]->menuDescription = $menu->menuDescription;
+				$resultOrders[$i]->menuTitle = $menu->menuTitle;
+				$resultOrders[$i]->menuDate = $menu->menuDate;
+			}
+		} catch (Exception $e){
+			$blub = $e;
+		}
+
+
+//get the result size
+		$count = sizeof($resultOrders);
+
+//order the array
+		if ($order != "asc") {
+			$result = array_reverse($resultOrders);
+		}
+
+//get the subview of the array
+		$result = array_slice($resultOrders, $offset, $limit);
+
+		echo "{";
+		echo '"total": ' . $count . ',';
+		echo '"rows": ';
+		echo json_encode($result);
+		echo "}";
+	}
 }

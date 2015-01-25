@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-md-3 col-sm-3">
             <span class="menuInput">
-                <input type="number" class="form-control" min="0">
+                <input type="number" class="form-control" min="0" id="{{$menu->id}}">
             </span>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
         <div class="row" style="margin-top: 20px; margin-bottom: 20px">
             <div class="col-md-1 col-sm-1">
-                <button type="submit" class="btn btn-default">Order</button>
+                <button type="submit" class="btn btn-default" onclick="orderMenus()">Order</button>
             </div>
         </div>
     </form>
@@ -53,4 +53,5 @@
         $("#profile").removeClass('active');
         $("#menuoverview").addClass('active');
     </script>
+    <script src="{{URL::asset('js/MenuOverview/menuoverview.js')}}"></script>
 @stop

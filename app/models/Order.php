@@ -5,17 +5,17 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Menu extends Eloquent {
+class Order extends Eloquent {
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'menus';
+	protected $table = 'orders';
 	protected $guarded = ['id', 'created_at', 'updated_at'];
 
-	function user() {
-		return $this->belongsTo('User', 'id');
+	function getMenu() {
+		return $this->hasOne('Menu', 'id');
 	}
 }
