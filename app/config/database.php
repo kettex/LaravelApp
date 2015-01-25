@@ -52,7 +52,7 @@ return array(
 			'prefix'   => '',
 		),
 
-		/*'mysql' => array(
+		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'webtech',
@@ -61,9 +61,9 @@ return array(
 			'charset'   => 'utf8',
 			'collation' => 'utf8_general_ci',
 			'prefix'    => '',
-		), */
+		),
 
-		'mysql' => array(
+		/*'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'eu-cdbr-azure-west-b.cloudapp.net',
 			'database'  => 'unikluwAKONyoKcd',
@@ -72,7 +72,7 @@ return array(
 			'charset'   => 'utf8',
 			'collation' => 'utf8_general_ci',
 			'prefix'    => '',
-		),
+		),*/
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

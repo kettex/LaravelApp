@@ -12,15 +12,13 @@
             </div>
         </div>
     </div>
-
-
     <div id="product-post">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-section">
                         <h2>Feel free to send a message</h2>
-                        <img src="images/under-heading.png" alt="">
+                        <img src="{{URL::asset('images/under-heading.png')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -76,7 +74,7 @@
                 <div class="col-md-12">
                     <div class="heading-section">
                         <h2>Find Us On Map</h2>
-                        <img src="images/under-heading.png" alt="">
+                        <img src="{{URL::asset('images/under-heading.png')}}" alt="">
                     </div>
                 </div>
             </div>

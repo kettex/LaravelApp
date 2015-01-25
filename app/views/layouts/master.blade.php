@@ -37,12 +37,6 @@
     <script src="{{ URL::asset('js/vendor/modernizr-2.6.1-respond-1.1.0.min.js') }}"></script>
 </head>
 <body>
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
-    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
-    experience this site.</p>
-<![endif]-->
-
 <header>
     <div id="top-header">
         <div class="container">
@@ -55,12 +49,7 @@
                         <a href="{{URL::to('register')}}">Register</a>
                     </div>
                 </div>
-                {{--<div class="col-md-6">
-                    <div class="cart-info">
-                        <i class="fa fa-shopping-cart"></i>
-                        (<a href="#">5 items</a>) in your cart (<a href="#">$45.80</a>)
-                    </div>
-                </div>--}}
+
             </div>
         </div>
     </div>
@@ -68,10 +57,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    {{--<div class="logo">
-                        <a href="#"><img src="{{URL::asset('images/logo.png')}}" title="Logo"
-                                         alt="Logo"></a>
-                    </div>--}}
+
                 </div>
                 <div class="col-md-6">
                     <div class="main-menu">
