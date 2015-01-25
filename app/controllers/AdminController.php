@@ -1,24 +1,40 @@
 <?php
 
 class AdminController extends BaseController {
+	/**
+	 * @return dashboard view of admins
+	 */
 	public function showDashboard()
 	{
 		return View::make('admin/dashboard');
 	}
 
+	/**
+	 * @return menumanagement view of admins
+	 */
 	public function showMenuManagement(){
 		return View::make('admin/menumanagement');
 	}
 
+	/**
+	 * @return usermanagement view of admins
+	 */
 	public function showUserManagement(){
 		return View::make('admin/usermanagement');
 	}
 
+	/**
+	 * Logs the out of the application
+	 * @return hello view of public website
+	 */
 	public function signOut(){
 		Auth::logout();
 		return View::make('hello');
 	}
 
+	/**
+	 * importing an excel file of available menus
+	 */
 	public function importExcel(){
 		$file = Input::file('file');
 
@@ -44,6 +60,9 @@ class AdminController extends BaseController {
 		return $file;
 	}
 
+	/**
+	 * @return the latest ordered menus for admin dashboard
+	 */
 	public function getLatestOrderedMenus(){
 		if (isset($_GET["limit"])) {
 			$limit = $_GET["limit"];

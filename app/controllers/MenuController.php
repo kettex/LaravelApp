@@ -7,7 +7,7 @@ class MenuController extends BaseController
     {
     }
 
-    public function editMenu()
+    /*public function editMenu()
     {
         // return if no id was sent to controller
         if (!Input::has('id')) {
@@ -35,9 +35,11 @@ class MenuController extends BaseController
         } catch (Exception $e) {
             return Redirect::to('error');
         }
-    }
+    }*/
 
-    // Server side paging and sorting of online menus
+    /**
+     * @return server side paging and sorting for online menus
+     */
     public function getOnlineMenus()
     {
         if (isset($_GET["limit"])) {
@@ -84,7 +86,9 @@ class MenuController extends BaseController
         echo "}";
     }
 
-    // Server side paging and sorting of offline menus
+    /**
+     * @return server side paging and sorting for online menus
+     */
     public function getOfflineMenus()
     {
         if (isset($_GET["limit"])) {
@@ -131,10 +135,15 @@ class MenuController extends BaseController
         echo "}";
     }
 
+    /**
+     * set offline menus online
+     */
     public function setMenusOnline()
     {
         try {
-            // decode the json data from ajax request
+            /**
+             * decode json data from ajax request
+             */
             $data = json_decode($GLOBALS["HTTP_RAW_POST_DATA"]);
 
             foreach ($data as $menu) {
@@ -142,7 +151,9 @@ class MenuController extends BaseController
                     continue;
                 }
 
-                // set menu in database active
+                /**
+                 * set menu in database active
+                 */
                 DB::table('menus')->where('id', $menu->id)->update(array('isActive' => 1));
             }
         } catch (Exception $e) {
@@ -150,16 +161,24 @@ class MenuController extends BaseController
         }
     }
 
-    // create new orders for users
+    /**
+     * create new orders for users
+     */
     public function orderMenus()
     {
         try {
-            // decode the json data from ajax request
+            /**
+             * decode json data from ajax request
+             */
             $data = json_decode($GLOBALS["HTTP_RAW_POST_DATA"]);
 
-            // iterate through data object
+            /**
+             * iterate through data object
+             */
             foreach ($data as $order) {
-                // create new order for earch ordered menu --> if there where 2 menus ordered --> create 2 seperate orders
+                /**
+                 * create new order for earch ordered menu --> if there where 2 menus ordered --> create 2 seperate orders
+                 */
                 for ($i = 0; $i < $order->orderCount; $i++) {
                     $newOrder = new Order();
 
