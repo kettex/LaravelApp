@@ -93,9 +93,12 @@ class AdminController extends BaseController {
 		try{
 			for($i = 0; $i < count($resultOrders); $i++){
 				$menu = Menu::find($resultOrders[$i]->menu_id);
+				$user = User::find($resultOrders[$i]->user_id);
 				$resultOrders[$i]->menuDescription = $menu->menuDescription;
 				$resultOrders[$i]->menuTitle = $menu->menuTitle;
 				$resultOrders[$i]->menuDate = $menu->menuDate;
+				$resultOrders[$i]->company = $user->company;
+				$resultOrders[$i]->deliveryAddress = $user->deliveryAddress;
 			}
 		} catch (Exception $e){
 			$blub = $e;

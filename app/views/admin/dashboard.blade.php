@@ -30,6 +30,8 @@
                 <th data-field="menuDate" data-sortable="false">Date</th>
                 <th data-field="menuTitle" data-sortable="false">Menu</th>
                 <th data-field="menuDescription" data-sortable="false">Description</th>
+                <th data-field="company" data-sortable="false">Company</th>
+                <th data-field="deliveryAddress" data-sortable="false">Delivery Address</th>
             </tr>
             </thead>
         </table>
